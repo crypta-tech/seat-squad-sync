@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeatSquadSyncTable extends Migration
+class CreateSquadSyncTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,7 @@ class CreateSeatSquadSyncTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('squad_id');
             $table->unsignedInteger('role_id');
+            $table->string('name');
             $table->timestamps();
 
             $table->foreign('squad_id')
@@ -28,6 +29,8 @@ class CreateSeatSquadSyncTable extends Migration
                 ->references('id')
                 ->on('roles')
                 ->onDelete('cascade');
+
+            $table->unique(['squad_id', 'role_id']);
         });
     }
 
