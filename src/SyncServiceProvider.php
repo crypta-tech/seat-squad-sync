@@ -3,6 +3,7 @@
 namespace CryptaEve\Seat\SquadSync;
 
 use Seat\Services\AbstractSeatPlugin;
+use CryptaEve\Seat\SquadSync\Console\Synchronise;
 
 class SyncServiceProvider extends AbstractSeatPlugin
 {
@@ -16,7 +17,7 @@ class SyncServiceProvider extends AbstractSeatPlugin
         $this->add_routes();
         $this->add_views();
         $this->add_translations();
-
+        $this->add_commands();
         $this->addMigrations();
     }
 
@@ -67,8 +68,11 @@ class SyncServiceProvider extends AbstractSeatPlugin
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations/');
     }
 
-    private function addCommands()
+    private function add_commands()
     {
+        $this->commands([
+                Synchronise::class,
+            ]);
     }
 
     /**
