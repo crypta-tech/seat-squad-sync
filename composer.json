@@ -1,0 +1,31 @@
+{
+    "name": "cryptaeve/seat-squad-sync",
+    "description": "Module sync seat squad members into role affiliations",
+    "type": "seat-plugin",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Crypta Electrica",
+            "email": "crypta@crypta.tech"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "CryptaEve\\Seat\\SquadSync\\": "src/"
+        }
+    },
+     "extra": {
+        "laravel": {
+            "providers": [
+                "CryptaEve\\Seat\\SquadSync\\SyncServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "eveseat/services": "^4.0",
+        "eveseat/eveapi": "^4.0",
+        "eveseat/web": "^4.0"
+    }
+}
+
