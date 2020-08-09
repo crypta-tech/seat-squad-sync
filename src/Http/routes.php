@@ -29,5 +29,11 @@ Route::group([
         'uses' => 'SyncController@getAboutView',
         'middleware' => 'can:squadsync.edit'
     ]);
+
+    Route::get('/instructions', [
+        'as'   => 'squadsync.instructions',
+        'uses' => 'SyncController@getInstructionsView',
+        'middleware' => 'can:squadsync.edit'
+    ]);
     
 });

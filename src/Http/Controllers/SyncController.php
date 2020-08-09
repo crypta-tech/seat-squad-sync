@@ -5,6 +5,10 @@ namespace CryptaEve\Seat\SquadSync\Http\Controllers;
 use Seat\Web\Http\Controllers\Controller;
 use CryptaEve\Seat\SquadSync\Models\Sync;
 use CryptaEve\Seat\SquadSync\Validation\AddSquadSync;
+use Seat\Web\Models\Acl\Role;
+use Seat\Web\Models\Acl\Permission;
+use Seat\Web\Models\Squads\Squad;
+use Illuminate\Database\QueryException;
 
 
 class SyncController extends Controller 
@@ -20,21 +24,47 @@ class SyncController extends Controller
     {
 
         $syncs = Sync::all();
+        $squads = Squad::all();
+        $roles = Role::all();
+        $perms = Permission::where('title', 'LIKE', 'character.%')->get();
 
-        return view("squadsync::configure", compact('syncs'));
+        return view("squadsync::configure", compact('syncs', 'squads', 'roles', 'perms'));
     }
 
     public function postNewSync(AddSquadSync $request)
     {
-        $sync = new Sync();
+        try{
+            $sync = new Sync();
 
-        $sync->name = $request->name;
-        $sync->squad_id = $request->squad;
-        $sync->role_id = $request->role;
+            $sync->name = $request->name;
+            $sync->squad_id = $request->squad;
+            $sync->role_id = $request->role;
+            // $sync->permissions = $request->permissions;
+    
+            // $sync = Sync::create([
+            //     'name' => $request->input('name'),
+            //     'squad_id' => $request->input('squad'),
+            //     'role_id' => $request->input('role')
+            // ]);
 
-        $sync->save();
+            $sync->save();
+            $sync = $sync->fresh();
 
-        return redirect()->route('squadsync.configure')->with('success', 'Created New Sync');
+            foreach($request->permissions as $perm)
+            {
+                $permission = Permission::find($perm);
+                $sync->permissions()->save($permission);
+            }
+    
+            return redirect()->route('squadsync.configure')->with('success', 'Created New Sync');
+        }
+        catch (QueryException $e)
+        {
+
+            dd($e);
+            return redirect()->route('squadsync.configure')->with('error', 'Error creating sync, does it already exist?');
+        }
+        
     }
 
     public function deleteSyncById($id)
@@ -47,6 +77,11 @@ class SyncController extends Controller
     public function getAboutView()
     {
         return view("squadsync::about");
+    }
+
+    public function getInstructionsView()
+    {
+        return view("squadsync::instructions");
     }
 
 }

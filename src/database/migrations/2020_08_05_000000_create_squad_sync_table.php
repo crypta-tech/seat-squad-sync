@@ -18,6 +18,7 @@ class CreateSquadSyncTable extends Migration
             $table->unsignedInteger('squad_id');
             $table->unsignedInteger('role_id');
             $table->string('name');
+            // $table->json('permissions');
             $table->timestamps();
 
             $table->foreign('squad_id')

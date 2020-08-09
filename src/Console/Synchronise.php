@@ -41,9 +41,14 @@ class Synchronise extends Command
             })
             ->each(function ($sync) {
 
-                $this->info($sync->name);
+                $this->info("Processing - " . $sync->name);
+                
+                $sync->fullSync();
+
             });
 
+
+        $this->info("Done!");
     }
 
 }

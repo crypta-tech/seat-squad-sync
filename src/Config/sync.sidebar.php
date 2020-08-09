@@ -18,6 +18,13 @@ return [
                 'route' => 'squadsync.configure',
                 'permission' => 'squadsync.edit'
             ],
+            'isntructions' => [
+                'name' => 'Instructions',
+                'icon' => 'fas fa-book-open',
+                'route_segment' => 'squadsync',
+                'route' => 'squadsync.instructions',
+                'permission' => 'squadsync.edit'
+            ],
             'about' => [
                 'name' => 'About',
                 'icon' => 'fas fa-info',

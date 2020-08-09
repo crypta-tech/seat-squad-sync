@@ -18,6 +18,8 @@ class AddSquadSync extends FormRequest
             'name' => 'required|string',
             'squad' => 'required|integer',
             'role' => 'required|integer',
+            'permissions' => 'required|array',
+            'permissions.*' => 'integer|exists:permissions,id'
         ];
     }
 }
