@@ -1,19 +1,53 @@
-# seat-fitting
-A module for [SeAT](https://github.com/eveseat/seat) that holds fittings and can compare the required skills for a fit to your character.
+# seat-squad-sync
+A module for [SeAT](https://github.com/eveseat/seat) that allows for creating a link between the members of a 
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/denngarr/seat-fitting.svg?style=flat-square)]()
-[![Build Status](https://img.shields.io/travis/dysath/seat-fitting.svg?style=flat-square)](https://travis-ci.org/dysath/seat-srp)
-[![License](https://img.shields.io/badge/license-GPLv2-blue.svg?style=flat-square)](https://raw.githubusercontent.com/dysath/seat-srp/master/LICENSE)
+[![Latest Stable Version](https://img.shields.io/packagist/v/cryptaeve/seat-squad-sync.svg?style=flat-square)]()
+[![License](https://img.shields.io/badge/license-GPLv2-blue.svg?style=flat-square)](https://raw.githubusercontent.com/crypta-eve/seat-squad-sync/master/LICENSE)
 
-If you have issues with this, you can contact me on Eve as **Denngarr B'tarn**, or on email as 'denngarr@cripplecreekcorp.com'
+## Usage
+This plugin provides a very simple yet powerful functionality that allows syncing squad members to role affiliations.
 
-## Quick Installation:
+This allows for squads to be created which act as for example a recruitment squad. People who want to apply to corp join the squad. This plugin will then sync the character to be a part of the affiliations of the linked recruitment role.
+
+As this plugin watches for squad member changes, this should be immediate however there is also a job which can be run to refresh all syncs.
+
+
+### NB
+
+At the present time there is a need to configure the `squadsync:sync` job to run on a schedule as the sync is not maintained automatically at this point.
+
+## TODO
+
+- [x] refresh syncs on command (scheduled and manual)
+- [] set up observer to automatically sync users on squad events
+- [] implement ability to prevent the squad role from being the target role
+
+## Quick Installation
+### Docker Install
+
+Open the .env file (which is most probably at /opt/seat-docker/.env) and edit the SEAT_PLUGINS variable to include the package. 
+
+```
+# SeAT Plugins
+# This is a list of the all of the third party plugins that you
+# would like to install as part of SeAT. Package names should be
+# comma separated if multiple packages should be installed.
+SEAT_PLUGINS=cryptaeve/seat-squad-sync
+```
+
+Save your .env file and run docker-compose up -d to restart the stack with the new plugins as part of it. Depending on how many other plugins you also may have, this could take a while to complete.
+
+You can monitor the installation process by running:
+
+docker-compose logs --tail 5 -f seat-app
+
+### Blade Install
 
 In your seat directory (By default:  /var/www/seat), type the following:
 
 ```
 php artisan down
-composer require denngarr/seat-fitting
+composer require cryptaeve/seat-squad-sync
 
 php artisan vendor:publish --force --all
 php artisan migrate
@@ -21,8 +55,8 @@ php artisan migrate
 php artisan up
 ```
 
-And now, when you log into 'Seat', you should see a 'Fittings' link on the left.
+And now, when you log into 'Seat', you should see a 'Squad Sync' link on the left.
 
-Good luck, and Happy Hunting!!  o7
+
 
 
