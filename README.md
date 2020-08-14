@@ -9,8 +9,6 @@ This plugin provides a very simple yet powerful functionality that allows syncin
 
 This allows for squads to be created which act as for example a recruitment squad. People who want to apply to corp join the squad. This plugin will then sync the character to be a part of the affiliations of the linked recruitment role.
 
-As this plugin watches for squad member changes, this should be immediate however there is also a job which can be run to refresh all syncs.
-
 
 ### NB
 

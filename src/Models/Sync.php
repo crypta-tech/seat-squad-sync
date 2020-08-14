@@ -43,7 +43,7 @@ class Sync extends Model
 
         // Build the filter
 
-        if($this->squad->members->count() < 1){
+        if($this->squad->members->isEmpty()){
             return;
         }
 

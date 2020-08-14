@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label for="permissions">{{ trans_choice('web::seat.permission', 2) }}</label>
                                 <select multiple="multiple" id="permissions" name="permissions[]" class="form-control selectpicker"
-                                    style="width: 100%;" required>
+                                    style="width: 100%;" size="7" required>
                                     @foreach($perms as $pm)
                                     <option value="{{ $pm->id }}">
                                         {{ trans('web::permissions.' . str_replace('.', '_', $pm->title) . '_label') }}

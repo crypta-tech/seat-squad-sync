@@ -39,13 +39,6 @@ class SyncController extends Controller
             $sync->name = $request->name;
             $sync->squad_id = $request->squad;
             $sync->role_id = $request->role;
-            // $sync->permissions = $request->permissions;
-    
-            // $sync = Sync::create([
-            //     'name' => $request->input('name'),
-            //     'squad_id' => $request->input('squad'),
-            //     'role_id' => $request->input('role')
-            // ]);
 
             $sync->save();
             $sync = $sync->fresh();
@@ -60,8 +53,6 @@ class SyncController extends Controller
         }
         catch (QueryException $e)
         {
-
-            dd($e);
             return redirect()->route('squadsync.configure')->with('error', 'Error creating sync, does it already exist?');
         }
         
