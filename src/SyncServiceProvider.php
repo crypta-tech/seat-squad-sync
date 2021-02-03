@@ -97,7 +97,7 @@ class SyncServiceProvider extends AbstractSeatPlugin
      */
     public function getPackageRepositoryUrl(): string
     {
-        return 'https://github.com/cryptaeve/seat-squad-sync';
+        return 'https://github.com/Crypta-Eve/seat-squad-sync';
     }
 
     /**
