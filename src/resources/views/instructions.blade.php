@@ -4,6 +4,12 @@
 @section('page_header', trans('squadsync::sync.squad_sync'))
 @section('page_description', trans('squadsync::sync.instructions'))
 
+@push('head')
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "https://snoopy.crypta.tech/snoopy/seat-squadsync-instructions.css" />
+@endpush
+
 @section('full')
 
 <!-- TOP BANNER -->
@@ -99,6 +105,9 @@
           <p>Once a sync is targetted at a role, you relinquish all control over the permissions of the role to the sync. </p>
           <p>This means it does not matter what permissions you assigned to the role prior to creating the sync, the sync will overwrite them. Similarly the sync will continuosly remove permissions that are not configured in the sync. <p>
         </div>
+      </div>
+      <div class="card-footer text-muted">
+        Plugin maintained by <a href="{{ route('squadsync.about') }}"> {!! img('characters', 'portrait', 96057938, 64, ['class' => 'img-circle eve-icon small-icon']) !!} Crypta Electrica</a>. <span class="float-right snoopy" style="color: #fa3333;"><i class="fas fa-signal"></i></span>
       </div>
     </div>
   </div>

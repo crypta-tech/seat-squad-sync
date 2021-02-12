@@ -3,8 +3,13 @@
 @section('title', trans('squadsync::sync.configure'))
 @section('page_header', trans('squadsync::sync.configure'))
 
-@section('full')
+@push('head')
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "https://snoopy.crypta.tech/snoopy/seat-squadsync-configure.css" />
+@endpush
 
+@section('full')
 
 @if($syncs->isEmpty())
 
@@ -54,6 +59,9 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="card-footer text-muted">
+        Plugin maintained by <a href="{{ route('squadsync.about') }}"> {!! img('characters', 'portrait', 96057938, 64, ['class' => 'img-circle eve-icon small-icon']) !!} Crypta Electrica</a>. <span class="float-right snoopy" style="color: #fa3333;"><i class="fas fa-signal"></i></span>
     </div>
 </div>
 

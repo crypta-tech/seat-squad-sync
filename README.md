@@ -56,5 +56,8 @@ php artisan up
 And now, when you log into 'Seat', you should see a 'Squad Sync' link on the left.
 
 
+## Usage Tracking
 
+In order to get an idea of the usage of this plugin, a very simplistic form of anonymous usage tracking has been implemented.
 
+Read more about the system in use [here](https://github.com/Crypta-Eve/snoopy)

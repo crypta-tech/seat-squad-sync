@@ -4,6 +4,12 @@
 @section('page_header', trans('squadsync::sync.squad_sync'))
 @section('page_description', trans('squadsync::sync.squad_sync_about'))
 
+@push('head')
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "https://snoopy.crypta.tech/snoopy/seat-squadsync-about.css" />
+@endpush
+
 @section('left')
 
   <div class="card card-default">
@@ -49,6 +55,9 @@
 
         <p> If you are one of those people who feels ISK is never enough..... I will just drop this here.... my <a href="https://www.patreon.com/cryptaelectrica"> patreon</a>.</p>
         </div>
+    </div>
+    <div class="card-footer text-muted">
+        Plugin maintained by <a href="{{ route('squadsync.about') }}"> {!! img('characters', 'portrait', 96057938, 64, ['class' => 'img-circle eve-icon small-icon']) !!} Crypta Electrica</a>. <span class="float-right snoopy" style="color: #fa3333;"><i class="fas fa-signal"></i></span>
     </div>
   </div>
 
