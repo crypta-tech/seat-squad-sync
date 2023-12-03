@@ -7,31 +7,31 @@ Route::group([
 ], function () {
     
     Route::get('/configure', [
-        'as'   => 'squadsync.configure',
+        'as'   => 'cryptasquadsync::configure',
         'uses' => 'SyncController@getConfigureView',
         'middleware' => 'can:squadsync.edit'
     ]);
 
     Route::post('/postsyncnew', [
-        'as'   => 'squadsync.createSync',
+        'as'   => 'cryptasquadsync::createSync',
         'uses' => 'SyncController@postNewSync',
         'middleware' => 'can:squadsync.edit'
     ]);
 
     Route::get('/delsyncbyid/{id}', [
-        'as'   => 'squadsync.deleteSync',
+        'as'   => 'cryptasquadsync::deleteSync',
         'uses' => 'SyncController@deleteSyncById',
         'middleware' => 'can:squadsync.edit'
     ]);
 
     Route::get('/about', [
-        'as'   => 'squadsync.about',
+        'as'   => 'cryptasquadsync::about',
         'uses' => 'SyncController@getAboutView',
         'middleware' => 'can:squadsync.edit'
     ]);
 
     Route::get('/instructions', [
-        'as'   => 'squadsync.instructions',
+        'as'   => 'cryptasquadsync::instructions',
         'uses' => 'SyncController@getInstructionsView',
         'middleware' => 'can:squadsync.edit'
     ]);

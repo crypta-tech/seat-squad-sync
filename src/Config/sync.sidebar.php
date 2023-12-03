@@ -15,21 +15,21 @@ return [
                 'name' => 'Configure',
                 'icon' => 'fas fa-cogs',
                 'route_segment' => 'squadsync',
-                'route' => 'squadsync.configure',
+                'route' => 'cryptasquadsync::configure',
                 'permission' => 'squadsync.edit'
             ],
             'isntructions' => [
                 'name' => 'Instructions',
                 'icon' => 'fas fa-book-open',
                 'route_segment' => 'squadsync',
-                'route' => 'squadsync.instructions',
+                'route' => 'cryptasquadsync::instructions',
                 'permission' => 'squadsync.edit'
             ],
             'about' => [
                 'name' => 'About',
                 'icon' => 'fas fa-info',
                 'route_segment' => 'squadsync',
-                'route' => 'squadsync.about',
+                'route' => 'cryptasquadsync::about',
                 'permission' => 'squadsync.edit'
             ],
         ]

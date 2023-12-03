@@ -19,7 +19,7 @@
     </div>
     <div class="card-body">
         <p>You dont appear to have any Syncs configured. Perhaps you should check out the instructions page!</p>
-        <a type="button" href="{{ route('squadsync.instructions') }}" class="btn btn-warning">Instructions</a>
+        <a type="button" href="{{ route('cryptasquadsync::instructions') }}" class="btn btn-warning">Instructions</a>
     </div>
 </div>
 
@@ -50,18 +50,18 @@
                 @foreach ($syncs as $sync)
                 <tr>
                     <td>{{ $sync->name }}</td>
-                    <td><a href="{{ route('squads.show', $sync->squad->id) }}">{{ $sync->squad->name }}</a></td>
-                    <td><a href="{{ route('configuration.access.roles.edit', $sync->role->id) }}">{{ $sync->role->title }}</a></td>
+                    <td><a href="{{ route('seatcore::squads.show', $sync->squad->id) }}">{{ $sync->squad->name }}</a></td>
+                    <td><a href="{{ route('seatcore::configuration.access.roles.edit', $sync->role->id) }}">{{ $sync->role->title }}</a></td>
                     <td>@foreach($sync->permissions as $perm) {{ $perm->title }} @endforeach</td>
                     <td><a class="btn btn-xs btn-danger" role="button"
-                            href="{{ route('squadsync.deleteSync', $sync->id) }}">Delete!</a></td>
+                            href="{{ route('cryptasquadsync::deleteSync', $sync->id) }}">Delete!</a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
     <div class="card-footer text-muted">
-        Plugin maintained by <a href="{{ route('squadsync.about') }}"> {!! img('characters', 'portrait', 96057938, 64, ['class' => 'img-circle eve-icon small-icon']) !!} Crypta Electrica</a>. <span class="float-right snoopy" style="color: #fa3333;"><i class="fas fa-signal"></i></span>
+        Plugin maintained by <a href="{{ route('cryptasquadsync::about') }}"> {!! img('characters', 'portrait', 96057938, 64, ['class' => 'img-circle eve-icon small-icon']) !!} Crypta Electrica</a>. <span class="float-right snoopy" style="color: #fa3333;"><i class="fas fa-signal"></i></span>
     </div>
 </div>
 
@@ -73,7 +73,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
             </div>
-            <form role="form" action="{{ route('squadsync.createSync') }}" method="post" class="needs-validation"
+            <form role="form" action="{{ route('cryptasquadsync::createSync') }}" method="post" class="needs-validation"
                 novalidate>
                 <div class="modal-body">
                     {{ csrf_field() }}

@@ -13,17 +13,11 @@ use Illuminate\Database\QueryException;
 
 class SyncController extends Controller 
 {
-    // public function getDoctrineView()
-    // {
-    //     $doctrine_list = $this->getDoctrineList();
-
-    //     return view('fitting::doctrine', compact('doctrine_list'));
-    // }
 
     public function getConfigureView()
     {
 
-        $syncs = Sync::all();
+        $syncs = Sync::with('permissions')->get();
         $squads = Squad::all();
         $roles = Role::all();
         $perms = Permission::where('title', 'LIKE', 'character.%')->get();
@@ -49,11 +43,11 @@ class SyncController extends Controller
                 $sync->permissions()->save($permission);
             }
     
-            return redirect()->route('squadsync.configure')->with('success', 'Created New Sync');
+            return redirect()->route('cryptasquadsync::configure')->with('success', 'Created New Sync');
         }
         catch (QueryException $e)
         {
-            return redirect()->route('squadsync.configure')->with('error', 'Error creating sync, does it already exist?');
+            return redirect()->route('cryptasquadsync::configure')->with('error', 'Error creating sync, does it already exist?');
         }
         
     }
@@ -62,7 +56,7 @@ class SyncController extends Controller
     {
         Sync::destroy($id);
 
-        return redirect()->route('squadsync.configure')->with('success', 'Deleted Sync');
+        return redirect()->route('cryptasquadsync::configure')->with('success', 'Deleted Sync');
     }
 
     public function getAboutView()
